@@ -25,13 +25,16 @@
                                     {{ $product->name }}
                                 </a>
                             </td>
-                            <td><span class="badge">1</span>
+                            <td><span class="badge">{{ $product->pivot->count }}</span>
                                 <div class="btn-group">
-                                    <a type="button" class="btn btn-danger" href="http://laravel-diplom-1.rdavydov.ru/basket/1/remove">
-                                        <span class="glyphicon glyphicon-minus" aria-hidden="true">
-                                            -
-                                        </span>
-                                    </a>
+                                    <form action="{{ route('basket-remove', $product) }}" method="post">
+                                        <button type="submit" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true">
+                                                -
+                                            </span>
+                                        </button>
+                                        @csrf
+                                    </form>
                                     <form action="{{ route('basket-add', $product) }}" method="post">
                                         <button type="submit" class="btn btn-success" >
                                             <span class="glyphicon glyphicon-plus" aria-hidden="true">
@@ -42,14 +45,14 @@
                                     </form>
                                 </div>
                             </td>
-                            <td>{{ $product->price }}</td>
-                            <td>{{ $product->price }}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">Общая стоимость:</td>
-                            <td>71990 руб.</td>
+                            <td>{{ $product->price }} грн.</td>
+                            <td>{{ $product->getPriceForCount() }} грн.</td>
                         </tr>
                     @endforeach
+                    <tr>
+                        <td colspan="3">Общая стоимость:</td>
+                        <td>{{ $order->getFullPrice() }} грн.</td>
+                    </tr>
                 </tbody>
             </table>
             <br>

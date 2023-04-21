@@ -19,3 +19,9 @@ div.thumbnail img {
     color: black;
     text-decoration: none;
 }
+
+.badge {
+    border-radius: 50%;
+    background-color: aqua;
+    color:black;
+}

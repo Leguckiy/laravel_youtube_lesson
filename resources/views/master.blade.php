@@ -13,18 +13,21 @@
     <link href="/css/starter-template.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="{{ route('index') }}">Интернет Магазин</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li  class="active" ><a href="{{ route('index') }}">Все товары</a></li>
-                <li ><a href="{{ route('categories') }}">Категории</a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li  class="nav-item ms-3 active" ><a href="{{ route('index') }}">Все товары</a>
                 </li>
-                <li ><a href={{ route('basket') }}>В корзину</a></li>
-                <li><a href="{{ route('index') }}">Сбросить проект в начальное состояние</a></li>
+                <li class="nav-item ms-3"><a href="{{ route('categories') }}">Категории</a>
+                </li>
+                <li class="nav-item ms-3"><a href={{ route('basket') }} >В корзину</a>
+                </li>
+                <li class="nav-item ms-3"><a href="{{ route('index') }}">Сбросить проект в начальное состояние</a>
+                </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

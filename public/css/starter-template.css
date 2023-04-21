@@ -14,3 +14,8 @@ table {
 div.thumbnail img {
     max-height: 200px;
 }
+
+.collapse ul li a {
+    color: black;
+    text-decoration: none;
+}

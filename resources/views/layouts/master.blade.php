@@ -20,18 +20,19 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li  class="nav-item ms-3 active" ><a href="{{ route('index') }}">Все товары</a>
+                <li  class="nav-item ms-2 active" ><a href="{{ route('index') }}">Все товары</a>
                 </li>
-                <li class="nav-item ms-3"><a href="{{ route('categories') }}">Категории</a>
+                <li class="nav-item ms-2"><a href="{{ route('categories') }}">Категории</a>
                 </li>
-                <li class="nav-item ms-3"><a href={{ route('basket') }} >В корзину</a>
+                <li class="nav-item ms-2"><a href={{ route('basket') }} >В корзину</a>
                 </li>
-                <li class="nav-item ms-3"><a href="{{ route('index') }}">Сбросить проект в начальное состояние</a>
+                <li class="nav-item ms-2"><a href="{{ route('index') }}">Сбросить проект в начальное состояние</a>
                 </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="">Панель администратора</a></li>
+                <li class="me-2"><a href="">Панель администратора</a></li>
+                <li ><a href="">Зарегистрироваться</a></li>
             </ul>
         </div>
     </div>
@@ -39,7 +40,15 @@
 
 
 <div class="container">
-    @yield('content')
+    <div class="starter-template">
+        @if(session()->has('success'))
+            <p class="alert alert-success">{{ session('success') }}</p>
+        @endif
+        @if(session()->has('warning'))
+        <p class="alert alert-danger">{{ session('warning') }}</p>
+    @endif
+        @yield('content')
+    </div>
 </div>
 </body>
 </html>

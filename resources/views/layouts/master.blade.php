@@ -31,8 +31,13 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li class="me-2"><a href="">Панель администратора</a></li>
-                <li ><a href="">Зарегистрироваться</a></li>
+                @guest()
+                    <li ><a href="{{ route('login') }}">Панель администратора</a></li>
+                @endguest
+                @auth
+                    <li class="me-2"><a href="{{ route('home') }}">Панель администратора</a></li>
+                    <li ><a href="{{ route('get-logout') }}">Выйти</a></li>
+                @endauth
             </ul>
         </div>
     </div>

@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
     {
 
         $rules =  [
-            'code' => ['required', 'min:3', 'max:255'],
+            'code' => ['required', 'min:3', 'max:255', 'unique:products,code'],
             'name' => ['required', 'min:3', 'max:255'],
             'description' => ['required', 'min:5'],
             'price' => ['required', 'numeric', 'min:1'],
@@ -33,7 +33,7 @@ class ProductRequest extends FormRequest
 
         if ($this->route()->named('products.update')) {
             $rules['code'][array_search('unique:products,code', $rules['code'])] .=
-                ',' . $this->route()->parameter('product')->id;
+            ',' . $this->route()->parameter('product')->id;
         }
 
         return $rules;

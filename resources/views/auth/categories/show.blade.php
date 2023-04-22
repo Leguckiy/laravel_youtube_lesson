@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="col-md-12">
-        <h1>Категория Бытовая техника</h1>
+        <h1>Категория {{ $category->name }}</h1>
         <table class="table">
             <tbody>
             <tr>
@@ -33,7 +33,7 @@
             </tr>
             <tr>
                 <td>Картинка</td>
-                <td><img src="http://laravel-diplom-1.rdavydov.ru/storage/categories/appliance.jpg"
+                <td><img src="{{ Storage::url($category->image) }}"
                          height="240px"></td>
             </tr>
             <tr>

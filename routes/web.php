@@ -13,10 +13,12 @@ Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name(
 
 Route::group([
     'middleware' => 'auth',
-    'namespace' => 'App\Http\Controllers\Admin'
+    'namespace' => 'App\Http\Controllers\Admin',
+    'prefix' => 'admin',
 ], function() {
     Route::group(['middleware' => 'is_admin'], function() {
         Route::get('/orders', 'OrderController@index')->name('home');
+        Route::resource('categories', 'CategoryController');
     });
 });
 

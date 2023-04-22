@@ -29,15 +29,15 @@
 
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="">Категории</a></li>
-                    <li><a href="">Товары</a></li>
-                    <li><a href="">Заказы</a></li>
+                    <li class="ms-3"><a href="{{ route('categories.index') }}" class="text-decoration-none text-reset">Категории</a></li>
+                    <li class="ms-3"><a href="" class="text-decoration-none text-reset">Товары</a></li>
+                    <li class="ms-3"><a href="" class="text-decoration-none text-reset">Заказы</a></li>
                 </ul>
 
                 @guest
                     <ul class="nav navbar-nav navbar-right">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Войти</a>
+                            <a class="nav-link " href="{{ route('login') }}">Войти</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">Зарегистрироваться</a>
@@ -48,7 +48,7 @@
                 @auth
                     <ul class="nav navbar-nav navbar-right">
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle ms-3" href="#" role="button"
                                data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false" v-pre>
                                 Администратор

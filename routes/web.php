@@ -11,17 +11,29 @@ Auth::routes([
 
 Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('get-logout');
 
-Route::group([
-    'middleware' => 'auth',
-    'namespace' => 'App\Http\Controllers\Admin',
-    'prefix' => 'admin',
-], function() {
-    Route::group(['middleware' => 'is_admin'], function() {
-        Route::get('/orders', 'OrderController@index')->name('home');
-        Route::resource('categories', 'CategoryController');
-        Route::resource('products', 'ProductController');
+Route::middleware(['auth'])->group(function() {
+    Route::group([
+        'namespace' => 'App\Http\Controllers\Person',
+        'prefix' => 'person',
+        'as' => 'person.',
+    ], function() {
+        Route::get('/orders', 'OrderController@index')->name('orders.index');
+        Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
+    });
+
+    Route::group([
+        'namespace' => 'App\Http\Controllers\Admin',
+        'prefix' => 'admin',
+    ], function() {
+        Route::group(['middleware' => 'is_admin'], function() {
+            Route::get('/orders', 'OrderController@index')->name('home');
+            Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
+            Route::resource('categories', 'CategoryController');
+            Route::resource('products', 'ProductController');
+        });
     });
 });
+
 
 Route::get('/', 'App\Http\Controllers\MainController@index')->name('index');
 Route::get('/categories', 'App\Http\Controllers\MainController@categories')->name('categories');
@@ -36,5 +48,5 @@ Route::group(['prefix' => 'basket'], function() {
     });
 });
 
-Route::get('/{category}/{product}', 'App\Http\Controllers\MainController@product')->name('product');
+Route::get('/{category}/{product?}', 'App\Http\Controllers\MainController@product')->name('product');
 Route::get('/{category}', 'App\Http\Controllers\MainController@category')->name('category');

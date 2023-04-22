@@ -25,3 +25,7 @@ div.thumbnail img {
     background-color: aqua;
     color:black;
 }
+
+.active {
+    background-color: rgb(145, 131, 114);
+}

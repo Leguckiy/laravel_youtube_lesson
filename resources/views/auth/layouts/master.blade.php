@@ -29,9 +29,11 @@
 
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="ms-3"><a href="{{ route('categories.index') }}" class="text-decoration-none text-reset">Категории</a></li>
-                    <li class="ms-3"><a href="{{ route('products.index') }}" class="text-decoration-none text-reset">Товары</a></li>
-                    <li class="ms-3"><a href="{{ route('home') }}" class="text-decoration-none text-reset">Заказы</a></li>
+                    @admin
+                        <li class="ms-3  @routeactive('categories.index')"><a href="{{ route('categories.index') }}" class="text-decoration-none text-reset">Категории</a></li>
+                        <li class="ms-3 @routeactive('products.index')"><a href="{{ route('products.index') }}" class="text-decoration-none text-reset">Товары</a></li>
+                        <li class="ms-3 @routeactive('home')"><a href="{{ route('home') }}" class="text-decoration-none text-reset">Заказы</a></li>
+                    @endadmin
                 </ul>
 
                 @guest

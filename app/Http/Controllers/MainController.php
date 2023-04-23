@@ -5,16 +5,21 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductsFilterRequest;
 use App\Models\Category;
 use App\Models\Product;
+use \Debugbar;
 
 class MainController extends Controller
 {
     public function index(ProductsFilterRequest $request)
     {
+        // $class = '\Debugbar';
+        // $class::info('sfsf');
 
-        $productsQuery = Product::query();
+        // $productsQuery = Product::query();
+        $productsQuery = Product::with('category'); // объединяет множество одинаковых запросов в один
 
         if($request->filled('price_from')) {
             $productsQuery->where('price', '>=', $request->price_from);
+            Debugbar::info('price_from');
         }
 
         if($request->filled('price_to')) {

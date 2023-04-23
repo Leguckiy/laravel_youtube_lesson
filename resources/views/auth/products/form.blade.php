@@ -14,10 +14,10 @@
             <h1>Добавить товар</h1>
         @endisset
         <form method="POST" enctype="multipart/form-data"
-              @isset($product)
-              action="{{ route('products.update', $product) }}"
-              @else
-              action="{{ route('products.store') }}"
+            @isset($product)
+                action="{{ route('products.update', $product) }}"
+            @else
+                action="{{ route('products.store') }}"
             @endisset
         >
             <div>
@@ -28,11 +28,7 @@
                 <div class="input-group row">
                     <label for="code" class="col-sm-2 col-form-label">Код: </label>
                     <div class="col-sm-6">
-                        @error('code')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        @include('auth.layouts.error', ['fieldName' => 'code'])
                         <input type="text" class="form-control" name="code" id="code"
                                value="{{ old('code', $product->code ?? '') }}">
                     </div>
@@ -41,11 +37,7 @@
                 <div class="input-group row">
                     <label for="name" class="col-sm-2 col-form-label">Название: </label>
                     <div class="col-sm-6">
-                        @error('name')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        @include('auth.layouts.error', ['fieldName' => 'name'])
                         <input type="text" class="form-control" name="name" id="name"
                                value="{{ old('name', $product->name ?? '') }}">
                     </div>
@@ -73,11 +65,7 @@
                 <div class="input-group row">
                     <label for="description" class="col-sm-2 col-form-label">Описание: </label>
                     <div class="col-sm-6">
-                        @error('description')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        @include('auth.layouts.error', ['fieldName' => 'description'])
 						<textarea name="description" id="description" cols="72"
                             rows="7">{{ old('description', $product->description ?? '') }}
                         </textarea>
@@ -96,15 +84,25 @@
                 <div class="input-group row">
                     <label for="price" class="col-sm-2 col-form-label">Цена: </label>
                     <div class="col-sm-2">
-                        @error('price')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        @include('auth.layouts.error', ['fieldName' => 'price'])
                         <input type="text" class="form-control" name="price" id="price"
                                value="{{ old('price', $product->price ?? '') }}">
                     </div>
                 </div>
+                @foreach ([
+                    'hit' => 'Хит',
+                    'new' => 'Новинка',
+                    'recommend' => 'Рекомендуемые'
+                ] as $field => $title)
+                    <div class="form-check mt-3 mb-3">
+                        <input type="checkbox" class="form-check-input" name="{{ $field }}" id="{{ $field }}"
+                            @if(isset($product->$field) && $product->$field === 1)
+                                {{ "checked" }}
+                            @endif
+                        >
+                        <label for="code" class="form-check-label">{{ $title }} </label>
+                    </div>
+                @endforeach
                 <button class="btn btn-success">Сохранить</button>
             </div>
         </form>

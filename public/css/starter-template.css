@@ -1,5 +1,6 @@
 body {
-    padding-top: 20px;
+    /* padding-top: 70px; */
+    padding-top: 30px;
 }
 
 .starter-template {
@@ -15,17 +16,37 @@ div.thumbnail img {
     max-height: 200px;
 }
 
-.collapse ul li a {
-    color: black;
-    text-decoration: none;
+div.form-inline form {
+    display: inline;
 }
 
-.badge {
-    border-radius: 50%;
-    background-color: aqua;
-    color:black;
+div.labels {
+    position: absolute;
+}
+
+div.labels span.badge {
+    display: block;
+}
+
+span.badge.badge-success {
+    color: #fff;
+    background-color: #28a745;
+}
+
+span.badge.badge-warning {
+    color: #fff;
+    background-color: #dc3545;
+}
+
+span.badge.badge-danger {
+    color: #212529;
+    background-color: #ffc107;
 }
 
 .active {
-    background-color: rgb(145, 131, 114);
+    background-color: aquamarine;
+}
+
+.thumbnail {
+    border: 1px solid grey;
 }

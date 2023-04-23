@@ -26,7 +26,7 @@
                 </li>
                 <li class="nav-item ms-2 @routeactive('basket*')"><a href={{ route('basket') }} >В корзину</a>
                 </li>
-                <li class="nav-item ms-2"><a href="{{ route('index') }}">Сбросить проект в начальное состояние</a>
+                <li class="nav-item ms-2"><a href="{{ route('reset') }}">Сбросить проект в начальное состояние</a>
                 </li>
             </ul>
 

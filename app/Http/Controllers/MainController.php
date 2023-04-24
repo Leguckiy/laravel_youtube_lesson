@@ -5,21 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductsFilterRequest;
 use App\Models\Category;
 use App\Models\Product;
-use \Debugbar;
 
 class MainController extends Controller
 {
     public function index(ProductsFilterRequest $request)
     {
-        // $class = '\Debugbar';
-        // $class::info('sfsf');
-
         // $productsQuery = Product::query();
         $productsQuery = Product::with('category'); // объединяет множество одинаковых запросов в один
 
         if($request->filled('price_from')) {
             $productsQuery->where('price', '>=', $request->price_from);
-            Debugbar::info('price_from');
         }
 
         if($request->filled('price_to')) {
@@ -28,7 +23,9 @@ class MainController extends Controller
 
         foreach(['hit', 'new', 'recommend'] as $field) {
             if($request->has($field)) {
-                $productsQuery->where($field, 1);
+                // $productsQuery->where($field, 1);
+                // заменяет предыдущую строку. Вызов метода hit() делает вызов метода из модели scopeHit()
+                $productsQuery->$field();
             }
         }
 

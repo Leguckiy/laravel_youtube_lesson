@@ -6,7 +6,7 @@
     <h1>Подтвердите заказ:</h1>
     <div class="container">
         <div class="justify-content-center">
-            <p>Общая стоимость заказа: <b>{{ $order->getFullPrice() }} грн.</b></p>
+            <p>Общая стоимость заказа: <b>{{ $order->calculateFullSum() }} грн.</b></p>
             <form action="{{ route('basket-confirm') }}" method="POST">
                 <div>
                     <p>Укажите свои имя и номер телефона, чтобы наш менеджер мог с вами связаться:</p>

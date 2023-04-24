@@ -13,13 +13,17 @@
                 <span class="badge rounded-pill bg-danger">Хит продаж!</span>
             @endif
         </div>
-        <img src="{{ Storage::url($product->image) }}" alt="iPhone X 64GB">
+        <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}">
         <div class="caption">
             <h3>{{ $product->name }}</h3>
             <p>{{ $product->price }} грн.</p>
             <p>
                 <form action="{{ route('basket-add', $product->id) }}" method="post">
-                    <button class="btn btn-primary" type="submit">В корзину</button>
+                    @if($product->isAvailable())
+                        <button class="btn btn-primary" type="submit">В корзину</button>
+                    @else
+                        Не доступен
+                    @endif
                     <a href="{{ route('product', [isset($category) ? $category->code : $product->category->code, $product->code]) }}"
                         class="btn btn-default" role="button">Подробнее
                     </a>

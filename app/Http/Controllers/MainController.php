@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductsFilterRequest;
 use App\Models\Category;
 use App\Models\Product;
+use Psy\Readline\Hoa\Protocol;
 
 class MainController extends Controller
 {
@@ -47,8 +48,9 @@ class MainController extends Controller
         return view('category', compact('category'));
     }
 
-    public function product($category, $product = null)
+    public function product($category, $productCode)
     {
-        return view('product', ['product' => $product]);
+        $product = Product::withTrashed()->byCode($productCode)->first();
+        return view('product', compact('product'));
     }
 }

@@ -89,6 +89,14 @@
                                value="{{ old('price', $product->price ?? '') }}">
                     </div>
                 </div>
+                <div class="input-group row">
+                    <label for="count" class="col-sm-2 col-form-label">Кол-во: </label>
+                    <div class="col-sm-2">
+                        @include('auth.layouts.error', ['fieldName' => 'count'])
+                        <input type="text" class="form-control" name="count" id="count"
+                               value="{{ old('count', $product->count ?? '') }}">
+                    </div>
+                </div>
                 @foreach ([
                     'hit' => 'Хит',
                     'new' => 'Новинка',

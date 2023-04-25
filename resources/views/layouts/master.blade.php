@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Интернет Магазин: @yield('title')</title>
+    <title>@lang('main.online_shop'): @yield('title')</title>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
@@ -16,21 +16,24 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ route('index') }}">Интернет Магазин</a>
+            <a class="navbar-brand" href="{{ route('index') }}">@lang('main.online_shop')</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li  class="nav-item ms-2 @routeactive('index')" >
-                    <a href="{{ route('index') }}" class="text-decoration-none text-reset">Все товары</a>
+                <li  class="nav-item ms-1 @routeactive('index')" >
+                    <a href="{{ route('index') }}" class="text-decoration-none text-reset">@lang('main.all_products')</a>
                 </li>
-                <li class="nav-item ms-2 @routeactive('categor*')">
+                <li class="nav-item ms-1 @routeactive('categor*')">
                     <a href="{{ route('categories') }}" class="text-decoration-none text-reset">Категории</a>
                 </li>
-                <li class="nav-item ms-2 @routeactive('basket*')">
+                <li class="nav-item ms-1 @routeactive('basket*')">
                     <a href={{ route('basket') }} class="text-decoration-none text-reset">В корзину</a>
                 </li>
-                <li class="nav-item ms-2">
+                <li class="nav-item ms-1">
                     <a href="{{ route('reset') }}" class="text-decoration-none text-reset">Сбросить проект в начальное состояние</a>
+                </li>
+                <li class="nav-item ms-1">
+                    <a href="{{ route('locale', __('main.set_lang')) }}" class="text-decoration-none text-reset">@lang('main.set_lang')</a>
                 </li>
             </ul>
 

@@ -1,6 +1,6 @@
 <p>Dear {{ $name }}</p>
 
-<p>Your order for the amount {{ $fullSum }} grn created</p>
+<p>@lang('mail.order_created.your_order') {{ $fullSum }} grn created</p>
 
 <table>
     <tbody>

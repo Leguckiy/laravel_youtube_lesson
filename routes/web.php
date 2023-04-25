@@ -51,4 +51,4 @@ Route::group(['prefix' => 'basket'], function() {
 });
 
 Route::get('/{category}', 'App\Http\Controllers\MainController@category')->name('category');
-Route::get('/{category}/{product?}', 'App\Http\Controllers\MainController@product')->name('product');
+Route::get('/{category}/{product}', 'App\Http\Controllers\MainController@product')->name('product');

@@ -20,6 +20,12 @@
                             <label for="phone" class="form-label">Номер телефона: </label>
                             <input type="text" name="phone" id="phone" value="" class="form-control">
                         </div>
+                        @guest
+                            <div class="align-self-center">
+                                <label for="email" class="form-label">Email: </label>
+                                <input type="text" name="email" id="email" value="" class="form-control">
+                            </div>
+                        @endguest
                     </div>
                     <br>
                     <input type="submit" class="btn btn-success" value="Подтвердить заказ">

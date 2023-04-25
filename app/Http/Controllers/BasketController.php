@@ -51,7 +51,7 @@ class BasketController extends Controller
         if ($result) {
             session()->flash('success', 'Добавлен товар ' . $product->name);
         } else {
-            session()->flash('warning', 'Товар ' . $product->name . 'в большем количестве не доступен для заказа');
+            session()->flash('warning', 'Товар ' . $product->name . ' в большем количестве не доступен для заказа');
         }
 
 

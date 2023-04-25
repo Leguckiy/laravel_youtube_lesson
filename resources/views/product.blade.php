@@ -16,6 +16,21 @@
             </button>
         </form>
     @else
-        Не доступен
+        <span>Не доступен</span>
+        <br>
+        <span>Сообщить мне, когда товар появиться в наличии</span>
+        <div class="alert alert-danger">
+            @error('email')
+                {{ $message }}
+            @enderror
+        </div>
+        <form method="post" action="{{ route('subscription', $product) }}">
+            @csrf
+            <span>ваш Email:</span>
+            <input type="text" name="email">
+            <button type="submit" class="btn btn-success">Отправить</button>
+        </form>
     @endif
 @endsection
+
+

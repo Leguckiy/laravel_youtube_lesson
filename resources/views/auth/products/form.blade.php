@@ -44,6 +44,14 @@
                 </div>
                 <br>
                 <div class="input-group row">
+                    <label for="name_en" class="col-sm-2 col-form-label">Название en: </label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="name_en" id="name_en"
+                               value="{{ old('name_en', $product->name_en ?? '') }}">
+                    </div>
+                </div>
+                <br>
+                <div class="input-group row">
                     <label for="category_id" class="col-sm-2 col-form-label">Категория: </label>
                     <div class="col-sm-6">
                         <select name="category_id" id="category_id" class="form-control">
@@ -68,6 +76,15 @@
                         @include('auth.layouts.error', ['fieldName' => 'description'])
 						<textarea name="description" id="description" cols="72"
                             rows="7">{{ old('description', $product->description ?? '') }}
+                        </textarea>
+                    </div>
+                </div>
+                <br>
+                <div class="input-group row">
+                    <label for="description_en" class="col-sm-2 col-form-label">Описание en: </label>
+                    <div class="col-sm-6">
+						<textarea name="description_en" id="description_en" cols="72"
+                            rows="7">{{ old('description_en', $product->description_en ?? '') }}
                         </textarea>
                     </div>
                 </div>

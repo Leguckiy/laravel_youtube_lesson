@@ -16,24 +16,36 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ route('index') }}">@lang('main.online_shop')</a>
+            <a class="navbar-brand" href="{{ route('index') }}">
+                @lang('main.online_shop')
+            </a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li  class="nav-item ms-1 @routeactive('index')" >
-                    <a href="{{ route('index') }}" class="text-decoration-none text-reset">@lang('main.all_products')</a>
+                    <a href="{{ route('index') }}" class="text-decoration-none text-reset">
+                        @lang('main.all_products')
+                    </a>
                 </li>
                 <li class="nav-item ms-1 @routeactive('categor*')">
-                    <a href="{{ route('categories') }}" class="text-decoration-none text-reset">Категории</a>
+                    <a href="{{ route('categories') }}" class="text-decoration-none text-reset">
+                        @lang('main.categories')
+                    </a>
                 </li>
                 <li class="nav-item ms-1 @routeactive('basket*')">
-                    <a href={{ route('basket') }} class="text-decoration-none text-reset">В корзину</a>
+                    <a href={{ route('basket') }} class="text-decoration-none text-reset">
+                        @lang('main.cart')
+                    </a>
                 </li>
                 <li class="nav-item ms-1">
-                    <a href="{{ route('reset') }}" class="text-decoration-none text-reset">Сбросить проект в начальное состояние</a>
+                    <a href="{{ route('reset') }}" class="text-decoration-none text-reset">
+                        @lang('main.reset_project')
+                    </a>
                 </li>
                 <li class="nav-item ms-1">
-                    <a href="{{ route('locale', __('main.set_lang')) }}" class="text-decoration-none text-reset">@lang('main.set_lang')</a>
+                    <a href="{{ route('locale', __('main.set_lang')) }}" class="text-decoration-none text-reset">
+                        @lang('main.set_lang')
+                    </a>
                 </li>
             </ul>
 
@@ -41,7 +53,7 @@
                 @guest()
                     <li >
                         <a href="{{ route('login') }}" class="text-decoration-none text-reset">
-                            Войти
+                            @lang('main.login')
                         </a>
                     </li>
                 @endguest
@@ -49,19 +61,19 @@
                     @admin
                         <li>
                             <a href="{{ route('home') }}" class="text-decoration-none text-reset">
-                                Панель администратора
+                                @lang('main.admin_panel')
                             </a>
                         </li>
                     @else
                         <li>
                             <a href="{{ route('person.orders.index') }}" class="text-decoration-none text-reset">
-                                Мои заказы
+                                @lang('main.my_orders')
                             </a>
                         </li>
                     @endadmin
                         <li class="ms-2">
                             <a href="{{ route('get-logout') }}" class="text-decoration-none text-reset">
-                                Выйти
+                                @lang('main.logout')
                             </a>
                         </li>
                 @endauth

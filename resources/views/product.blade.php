@@ -1,24 +1,24 @@
 @extends('layouts.master')
 
-@section('title', 'Товар')
+@section('title', __('main.product'))
 
 @section('content')
-    <h1>{{ $product->name }}</h1>
-    <h2>{{ $product->category->name }}</h2>
-    <p>Цена: <b>{{ $product->price }} руб.</b></p>
-    <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}">
-    <p>{{ $product->description }}</p>
+    <h1>{{ $product->__('name') }}</h1>
+    <h2>{{ $product->category->__('name') }}</h2>
+    <p>@lang('product.price'): <b>{{ $product->price }} @lang('main.rub').</b></p>
+    <img src="{{ Storage::url($product->image) }}" alt="{{ $product->__('name') }}">
+    <p>{{ $product->__('description') }}</p>
     @if($product->isAvailable())
         <form action="{{ route('basket-add', $product->id) }}" method="post">
             @csrf
             <button type="submit" class="btn btn-success">
-                Добавить в корзину
+                @lang('product.add_to_cart')
             </button>
         </form>
     @else
-        <span>Не доступен</span>
+        <span>@lang('product.not_available')</span>
         <br>
-        <span>Сообщить мне, когда товар появиться в наличии</span>
+        <span>@lang('product.tell_me'):</span>
         <div class="alert alert-danger">
             @error('email')
                 {{ $message }}
@@ -26,9 +26,9 @@
         </div>
         <form method="post" action="{{ route('subscription', $product) }}">
             @csrf
-            <span>ваш Email:</span>
+            <span>Email:</span>
             <input type="text" name="email">
-            <button type="submit" class="btn btn-success">Отправить</button>
+            <button type="submit" class="btn btn-success">@lang('product.subscribe')</button>
         </form>
     @endif
 @endsection

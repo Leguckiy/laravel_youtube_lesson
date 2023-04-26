@@ -45,11 +45,27 @@
                         </div>
                         <br>
                         <div class="input-group row">
+                            <label for="name_en" class="col-sm-2 col-form-label">Название en: </label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="name_en" id="name_en"
+                                       value="{{ old('name_en', $category->name_en ?? '') }}">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="input-group row">
                             <label for="description" class="col-sm-2 col-form-label">Описание: </label>
                             <div class="col-sm-6">
                                 @include('auth.layouts.error', ['fieldName' => 'description'])
 							<textarea name="description" id="description" cols="72"
                                       rows="7">{{ old('description', $category->description ?? '') }}</textarea>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="input-group row">
+                            <label for="description_en" class="col-sm-2 col-form-label">Описание en: </label>
+                            <div class="col-sm-6">
+							<textarea name="description_en" id="description_en" cols="72"
+                                      rows="7">{{ old('description_en', $category->description_en ?? '') }}</textarea>
                             </div>
                         </div>
                         <br>

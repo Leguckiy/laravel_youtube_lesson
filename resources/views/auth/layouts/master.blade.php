@@ -21,7 +21,7 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-default navbar-expand-md navbar-light navbar-laravel">
+    <nav class="navbar navbar-default navbar-expand-md navbar-dark bg-dark navbar-laravel">
         <div class="container">
             <a class="navbar-brand" href="{{ route('index') }}">
                 Вернуться на сайт
@@ -30,9 +30,21 @@
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     @admin
-                        <li class="ms-3  @routeactive('categories.index')"><a href="{{ route('categories.index') }}" class="text-decoration-none text-reset">Категории</a></li>
-                        <li class="ms-3 @routeactive('products.index')"><a href="{{ route('products.index') }}" class="text-decoration-none text-reset">Товары</a></li>
-                        <li class="ms-3 @routeactive('home')"><a href="{{ route('home') }}" class="text-decoration-none text-reset">Заказы</a></li>
+                        <li class="nav-item">
+                            <a href="{{ route('categories.index') }}" class="nav-link @routeactive('categories.index')">
+                                Категории
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('products.index') }}" class="nav-link @routeactive('products.index')">
+                                Товары
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link @routeactive('home')">
+                                Заказы
+                            </a>
+                        </li>
                     @endadmin
                 </ul>
 
@@ -55,14 +67,12 @@
                                aria-haspopup="true" aria-expanded="false" v-pre>
                                 Администратор
                             </a>
-
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout')}}"
                                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    document.getElementById('logout-form').submit();">
                                     Выйти
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout')}}" method="POST"
                                       style="display: none;">
                                     @csrf

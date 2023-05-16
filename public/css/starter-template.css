@@ -43,9 +43,9 @@ span.badge.badge-danger {
     background-color: #ffc107;
 }
 
-.active {
+/* .active {
     background-color: aquamarine;
-}
+} */
 
 .thumbnail {
     border: 1px solid grey;

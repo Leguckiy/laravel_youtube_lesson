@@ -23,7 +23,7 @@
         <div class="caption">
             <h3>{{ $product->__('name') }}</h3>
             <p>{{ $product->price }}
-                @lang('main.rub').
+                @lang(App\Services\CurrencyConversion::getCurrencySymbol())
             </p>
             <p>
                 <form action="{{ route('basket-add', $product->id) }}" method="post">

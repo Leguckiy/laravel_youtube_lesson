@@ -9,7 +9,7 @@
     <div class="container">
         <div class="justify-content-center">
             <p>
-                @lang('basket.full_cost'): <b>{{ $order->calculateFullSum() }} @lang('main.rub').</b>
+                @lang('basket.full_cost'): <b>{{ $order->calculateFullSum() }} @lang(App\Services\CurrencyConversion::getCurrencySymbol())</b>
             </p>
             <form action="{{ route('basket-confirm') }}" method="POST">
                 <div>

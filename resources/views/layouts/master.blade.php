@@ -9,11 +9,14 @@
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/starter-template.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="{{ route('index') }}">
@@ -22,37 +25,52 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li  class="nav-item ms-1 @routeactive('index')" >
-                    <a href="{{ route('index') }}" class="text-decoration-none text-reset">
+                <li  class="nav-item" >
+                    <a href="{{ route('index') }}" class="nav-link @routeactive('index')">
                         @lang('main.all_products')
                     </a>
                 </li>
-                <li class="nav-item ms-1 @routeactive('categor*')">
-                    <a href="{{ route('categories') }}" class="text-decoration-none text-reset">
+                <li class="nav-item">
+                    <a href="{{ route('categories') }}" class="nav-link @routeactive('categor*')">
                         @lang('main.categories')
                     </a>
                 </li>
-                <li class="nav-item ms-1 @routeactive('basket*')">
-                    <a href={{ route('basket') }} class="text-decoration-none text-reset">
+                <li class="nav-item">
+                    <a href={{ route('basket') }} class="nav-link @routeactive('basket*')">
                         @lang('main.cart')
                     </a>
                 </li>
-                <li class="nav-item ms-1">
-                    <a href="{{ route('reset') }}" class="text-decoration-none text-reset">
+                <li class="nav-item">
+                    <a href="{{ route('reset') }}" class="nav-link">
                         @lang('main.reset_project')
                     </a>
                 </li>
-                <li class="nav-item ms-1">
-                    <a href="{{ route('locale', __('main.set_lang')) }}" class="text-decoration-none text-reset">
+                <li class="nav-item">
+                    <a href="{{ route('locale', __('main.set_lang')) }}" class="nav-link">
                         @lang('main.set_lang')
                     </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {{-- @foreach (App\Models\Currency::get() as $currency) --}}
+                        @foreach (App\Services\CurrencyConversion::getCurrencies() as $currency)
+                            <li>
+                                <a class="dropdown-item" href="{{ route('currency', $currency->code) }}">
+                                    {{ $currency->symbol }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 @guest()
                     <li >
-                        <a href="{{ route('login') }}" class="text-decoration-none text-reset">
+                        <a href="{{ route('login') }}" class="nav-link">
                             @lang('main.login')
                         </a>
                     </li>
@@ -60,19 +78,19 @@
                 @auth
                     @admin
                         <li>
-                            <a href="{{ route('home') }}" class="text-decoration-none text-reset">
+                            <a href="{{ route('home') }}" class="nav-link">
                                 @lang('main.admin_panel')
                             </a>
                         </li>
                     @else
                         <li>
-                            <a href="{{ route('person.orders.index') }}" class="text-decoration-none text-reset">
+                            <a href="{{ route('person.orders.index') }}" class="nav-link">
                                 @lang('main.my_orders')
                             </a>
                         </li>
                     @endadmin
                         <li class="ms-2">
-                            <a href="{{ route('get-logout') }}" class="text-decoration-none text-reset">
+                            <a href="{{ route('get-logout') }}" class="nav-link">
                                 @lang('main.logout')
                             </a>
                         </li>

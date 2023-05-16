@@ -5,7 +5,7 @@
 @section('content')
     <h1>{{ $product->__('name') }}</h1>
     <h2>{{ $product->category->__('name') }}</h2>
-    <p>@lang('product.price'): <b>{{ $product->price }} @lang('main.rub').</b></p>
+    <p>@lang('product.price'): <b>{{ $product->price }} @lang(App\Services\CurrencyConversion::getCurrencySymbol())</b></p>
     <img src="{{ Storage::url($product->image) }}" alt="{{ $product->__('name') }}">
     <p>{{ $product->__('description') }}</p>
     @if($product->isAvailable())

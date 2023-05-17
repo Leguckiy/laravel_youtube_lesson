@@ -29,7 +29,7 @@
             </thead>
             <tbody>
                 {{-- @foreach ($order->products as $product) --}}
-                @foreach ($order->products()->with('category')->get() as $product)
+                @foreach ($order->products as $product)
                     <tr>
                         <td>
                             <a href="{{ route('product', [$product->category->code, $product->code]) }}">
@@ -37,7 +37,7 @@
                                 {{ $product->__('name') }}
                             </a>
                         </td>
-                        <td><span class="badge rounded-pill bg-primary">{{ $product->pivot->count }}</span>
+                        <td><span class="badge rounded-pill bg-primary">{{ $product->countInOrder }}</span>
                             <div class="btn-group">
                                 <form action="{{ route('basket-remove', $product) }}" method="post">
                                     <button type="submit" class="btn btn-danger">
@@ -61,7 +61,7 @@
                             {{ $product->price }} @lang(App\Services\CurrencyConversion::getCurrencySymbol())
                         </td>
                         <td>
-                            {{ $product->getPriceForCount() }} @lang(App\Services\CurrencyConversion::getCurrencySymbol())
+                            {{ $product->price * $product->countInOrder }} @lang(App\Services\CurrencyConversion::getCurrencySymbol())
                         </td>
                     </tr>
                 @endforeach

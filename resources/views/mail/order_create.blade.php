@@ -18,7 +18,7 @@
                 </td>
                 <td>
                     <span class="badge">
-                    {{ $product->pivot->count }}
+                    {{ $product->countInOrder }}
                     </span>
                     <div class="btn-group form-inline">
                         {!! $product->description !!}

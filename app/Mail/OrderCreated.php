@@ -46,7 +46,8 @@ class OrderCreated extends Mailable
      */
     public function content()
     {
-        $fullSum = $this->order->calculateFullSum();
+        // $fullSum = $this->order->calculateFullSum();
+        $fullSum = $this->order->getFullSum();
         return new Content(
             view: 'mail.order_create',
             // markdown: 'mail.order_create',

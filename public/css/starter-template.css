@@ -50,3 +50,10 @@ span.badge.badge-danger {
 .thumbnail {
     border: 1px solid grey;
 }
+
+footer {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #ffc107;
+    background-color: #2a2730;
+}

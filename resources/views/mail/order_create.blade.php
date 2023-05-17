@@ -25,10 +25,10 @@
                     </div>
                 </td>
                 <td>
-                    {{ $product->price }} @lang(App\Services\CurrencyConversion::getCurrencySymbol())
+                    {{ $product->price }} @lang($currencySymbol)
                 </td>
                 <td>
-                    {{ $product->getPriceForCount() }} @lang(App\Services\CurrencyConversion::getCurrencySymbol())
+                    {{ $product->getPriceForCount() }} @lang($currencySymbol)
                 </td>
             </tr>
         @endforeach

@@ -52,11 +52,13 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ App\Services\CurrencyConversion::getCurrencySymbol() }}
+                        {{-- {{ $currencySymbol }} --}}
+                        {{ $currencySymbol }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {{-- @foreach (App\Models\Currency::get() as $currency) --}}
-                        @foreach (App\Services\CurrencyConversion::getCurrencies() as $currency)
+                        {{-- @foreach (App\Services\CurrencyConversion::getCurrencies() as $currency) --}}
+                        @foreach ($currencies as $currency)
                             <li>
                                 <a class="dropdown-item" href="{{ route('currency', $currency->code) }}">
                                     {{ $currency->symbol }}
@@ -112,5 +114,37 @@
         @yield('content')
     </div>
 </div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <p>Категория товаров</p>
+                <ul>
+                    @foreach($categories as $category)
+                        <li>
+                            <a href="{{ route('category', $category->code) }}">
+                                {{ $category->__('name') }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <p>Самые популярные товары</p>
+                <ul>
+                    @foreach($bestProducts as $bestProduct)
+                        <li>
+                            <a href="{{ route('product', [$bestProduct->category->code, $bestProduct->code]) }}">
+                                {{ $bestProduct->__('name') }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>

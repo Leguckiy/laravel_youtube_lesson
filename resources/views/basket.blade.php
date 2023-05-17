@@ -58,10 +58,10 @@
                             </div>
                         </td>
                         <td>
-                            {{ $product->price }} @lang(App\Services\CurrencyConversion::getCurrencySymbol())
+                            {{ $product->price }} @lang($currencySymbol)
                         </td>
                         <td>
-                            {{ $product->price * $product->countInOrder }} @lang(App\Services\CurrencyConversion::getCurrencySymbol())
+                            {{ $product->price * $product->countInOrder }} @lang($currencySymbol)
                         </td>
                     </tr>
                 @endforeach
@@ -70,7 +70,7 @@
                         @lang('basket.full_cost'):
                     </td>
                     <td>
-                        {{ $order->getFullSum() }} @lang(App\Services\CurrencyConversion::getCurrencySymbol())
+                        {{ $order->getFullSum() }} @lang($currencySymbol)
                     </td>
                 </tr>
             </tbody>

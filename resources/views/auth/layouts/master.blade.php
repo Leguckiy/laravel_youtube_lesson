@@ -41,6 +41,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('properties.index') }}" class="nav-link @routeactive('properties.index')">
+                                Свойства
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('home') }}" class="nav-link @routeactive('home')">
                                 Заказы
                             </a>

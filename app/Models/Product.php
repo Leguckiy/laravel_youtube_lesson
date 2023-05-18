@@ -14,14 +14,12 @@ class Product extends Model
     protected $fillable = [
         'name',
         'code',
-        'price',
         'category_id',
         'description',
         'image',
         'new',
         'hit',
         'recommend',
-        'count',
         'name_en',
         'description_en',
     ];
@@ -38,7 +36,7 @@ class Product extends Model
 
    public function properties()
    {
-        return $this->belongsToMany(Property::class);
+        return $this->belongsToMany(Property::class, 'property_product')->withTimestamps();
    }
 
     public function getPriceForCount()

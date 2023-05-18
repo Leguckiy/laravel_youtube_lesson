@@ -21,12 +21,9 @@
                     Категория
                 </th>
                 <th>
-                    Цена
+                    Кол-во товарных предложений
                 </th>
-                <th>
-                    Кол-во
-                </th>
-                <th>
+                <th style="width: 39%">
                     Действия
                 </th>
             </tr>
@@ -36,15 +33,23 @@
                     <td>{{ $product->code }}</td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->category->name }}</td>
-                    <td>{{ $product->price }}</td>
-                    <td>{{ $product->count }}</td>
+                    <td>{{ 'hhh' }}</td>
+
                     <td>
                         <div class="btn-group" role="group">
                             <form action="{{ route('products.destroy', $product) }}" method="POST">
                                 <a class="btn btn-success" type="button"
-                                   href="{{ route('products.show', $product) }}">Открыть</a>
+                                   href="{{ route('products.show', $product) }}">
+                                   Открыть
+                                </a>
+                                <a class="btn btn-primary" type="button"
+                                   href="{{ route('skus.index', $product) }}">
+                                   Skus
+                                </a>
                                 <a class="btn btn-warning" type="button"
-                                   href="{{ route('products.edit', $product) }}">Редактировать</a>
+                                   href="{{ route('products.edit', $product) }}">
+                                   Редактировать
+                                </a>
                                 @csrf
                                 @method('DELETE')
                                 <input class="btn btn-danger" type="submit" value="Удалить"></form>

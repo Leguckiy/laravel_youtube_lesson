@@ -39,14 +39,6 @@ class Product extends Model
         return $this->belongsToMany(Property::class, 'property_product')->withTimestamps();
    }
 
-    public function getPriceForCount()
-    {
-        if (!is_null($this->pivot)) {
-            return $this->pivot->count * $this->price;
-        }
-        return $this->price;
-    }
-
     public function scopeHit($query)
     {
         return $query->where('hit', 1);
@@ -87,11 +79,6 @@ class Product extends Model
    {
         return round(CurrencyConversion::convert($value), 2);
    }
-
-    public function isAvailable()
-    {
-        return !$this->trashed() && $this->count > 0;
-    }
 
     public function isHit()
     {

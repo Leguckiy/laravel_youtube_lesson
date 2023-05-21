@@ -28,18 +28,17 @@
             </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($order->products as $product) --}}
-                @foreach ($order->products as $product)
+                @foreach ($order->skus as $sku)
                     <tr>
                         <td>
-                            <a href="{{ route('product', [$product->category->code, $product->code]) }}">
-                                <img height="56px" src="{{ Storage::url($product->image) }}">
-                                {{ $product->__('name') }}
+                            <a href="{{ route('sku', [$sku->product->category->code, $sku->product->code, $sku]) }}">
+                                <img height="56px" src="{{ Storage::url($sku->product->image) }}">
+                                {{ $sku->product->__('name') }}
                             </a>
                         </td>
-                        <td><span class="badge rounded-pill bg-primary">{{ $product->countInOrder }}</span>
+                        <td><span class="badge rounded-pill bg-primary">{{ $sku->countInOrder }}</span>
                             <div class="btn-group">
-                                <form action="{{ route('basket-remove', $product) }}" method="post">
+                                <form action="{{ route('basket-remove', $sku) }}" method="post">
                                     <button type="submit" class="btn btn-danger">
                                         <span class="glyphicon glyphicon-minus" aria-hidden="true">
                                             -
@@ -47,7 +46,7 @@
                                     </button>
                                     @csrf
                                 </form>
-                                <form action="{{ route('basket-add', $product) }}" method="post">
+                                <form action="{{ route('basket-add', $sku) }}" method="post">
                                     <button type="submit" class="btn btn-success" >
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true">
                                             +
@@ -58,10 +57,10 @@
                             </div>
                         </td>
                         <td>
-                            {{ $product->price }} @lang($currencySymbol)
+                            {{ $sku->price }} @lang($currencySymbol)
                         </td>
                         <td>
-                            {{ $product->price * $product->countInOrder }} @lang($currencySymbol)
+                            {{ $sku->price * $sku->countInOrder }} @lang($currencySymbol)
                         </td>
                     </tr>
                 @endforeach

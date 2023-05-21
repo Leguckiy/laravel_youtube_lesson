@@ -133,10 +133,10 @@
             <div class="col-lg-6">
                 <p>Самые популярные товары</p>
                 <ul>
-                    @foreach($bestProducts as $bestProduct)
+                    @foreach($bestSkus as $bestSku)
                         <li>
-                            <a href="{{ route('product', [$bestProduct->category->code, $bestProduct->code]) }}">
-                                {{ $bestProduct->__('name') }}
+                            <a href="{{ route('sku', [$bestSku->product->category->code, $bestSku->product->code, $bestSku]) }}">
+                                {{ $bestSku->product->__('name') }}
                             </a>
                         </li>
                     @endforeach
@@ -145,6 +145,5 @@
         </div>
     </div>
 </footer>
-
 </body>
 </html>

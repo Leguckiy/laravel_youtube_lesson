@@ -46,7 +46,7 @@
                 <div class="input-group row">
                     <label for="property_id[{{ $property->id }}]" class="col-sm-2 col-form-label">{{ $property->name }}: </label>
                     <div class="col-sm-6">
-                        <select name="property_id[{{ $property->id }}]" id="property_id[{{ $property->id }}]" class="form-control">
+                        <select name="property_id[{{ $property->id }}]" id="property_id[{{ $property->id }}]" class="form-select">
                             @foreach ($property->propertyOptions as $propertyOption)
                                 <option value="{{ $propertyOption->id }}"
                                     @isset($sku)

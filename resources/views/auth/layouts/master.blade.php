@@ -46,6 +46,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('coupons.index') }}" class="nav-link @routeactive('coupons.index')">
+                                Купоны
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('home') }}" class="nav-link @routeactive('home')">
                                 Заказы
                             </a>

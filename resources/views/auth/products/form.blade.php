@@ -54,7 +54,7 @@
                 <div class="input-group row">
                     <label for="category_id" class="col-sm-2 col-form-label">Категория: </label>
                     <div class="col-sm-6">
-                        <select name="category_id" id="category_id" class="form-control">
+                        <select name="category_id" id="category_id" class="form-select">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}"
                                     @isset($product)

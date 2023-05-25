@@ -51,6 +51,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('merchants.index') }}" class="nav-link @routeactive('merchants.index')">
+                                Поставщики
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('home') }}" class="nav-link @routeactive('home')">
                                 Заказы
                             </a>

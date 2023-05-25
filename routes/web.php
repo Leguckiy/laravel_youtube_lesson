@@ -38,6 +38,8 @@ Route::middleware('set_locale')->group(function() {
             Route::resource('products', 'ProductController');
             Route::resource('products/{product}/skus', 'SkuController');
             Route::resource('properties', 'PropertyController');
+            Route::resource('merchants', 'MerchantController');
+            Route::get('merchants/{merchant}/update-token', 'MerchantController@updateToken')->name('merchants.update-token');
             Route::resource('coupons', 'CouponController');
             Route::resource('properties/{property}/property-options', 'PropertyOptionController');
         });

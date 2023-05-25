@@ -38,6 +38,10 @@
                 </td>
             </tr>
             <tr>
+                <td>Скидка</td>
+                <td>{{ $coupon->value }}@if($coupon->isAbsolute()){{ $coupon->currency->symbol }}@else% @endif</td>
+            </tr>
+            <tr>
                 <td>Использовать один раз</td>
                 <td>
                     @if($coupon->isOnlyOnce()) Да @else Нет @endif
@@ -49,12 +53,14 @@
                     {{ $coupon->orders->count() }}
                 </td>
             </tr>
-            <tr>
-                <td>Действителен до:</td>
-                <td>
-                    {{ $coupon->expired_at->format('d:m:Y') }}
-                </td>
-            </tr>
+            @isset($coupon->expired_at)
+                <tr>
+                    <td>Действителен до:</td>
+                    <td>
+                        {{ $coupon->expired_at->format('d:m:Y') }}
+                    </td>
+                </tr>
+            @endisset
             </tbody>
         </table>
     </div>

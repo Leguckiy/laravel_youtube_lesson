@@ -3,6 +3,7 @@
 namespace App\Classes;
 
 use App\Mail\OrderCreated;
+use App\Models\Coupon;
 use App\Models\Order;
 use App\Models\Sku;
 use App\Services\CurrencyConversion;
@@ -78,7 +79,7 @@ class Basket
             $pivotRow = $this->getPivotRow($sku);
 
             if ($pivotRow->countInOrder < 2) {
-                $this->order->skus->pop($sku);
+                $this->order->skus->pop($sku->id);
             } else {
                 $pivotRow->countInOrder--;
             }
@@ -107,5 +108,15 @@ class Basket
         }
 
         return true;
+    }
+
+    public function setCoupon(Coupon $coupon)
+    {
+        $this->order->coupon()->associate($coupon);
+    }
+
+    public function clearCoupon()
+    {
+        $this->order->coupon()->dissociate();
     }
 }
